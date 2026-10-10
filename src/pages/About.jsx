@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { Users, Target, Shield } from 'lucide-react';
 import { BUSINESS } from '../data/business';
+import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     document.title = `About Us | ${BUSINESS.name}`;
     document.querySelector('meta[name="description"]')?.setAttribute('content', `Learn more about ${BUSINESS.name} and our commitment to quality plumbing services.`);
@@ -12,9 +14,9 @@ const About = () => {
     <div className="bg-white min-h-screen">
       {/* Page Header */}
       <div className="bg-brand-navy pt-20 pb-16 text-center text-white">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('about.title')}</h1>
         <p className="text-lg text-gray-300 max-w-2xl mx-auto px-4">
-          Learn more about {BUSINESS.name} and our commitment to quality plumbing services.
+          {t('about.subtitle')}
         </p>
       </div>
 
@@ -22,15 +24,15 @@ const About = () => {
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           
           <div className="flex-1 space-y-6">
-            <h2 className="text-3xl font-bold text-gray-900">Who We Are</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('about.whoWeAre')}</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              {BUSINESS.name} is a dedicated local plumbing service provider. We specialize in residential plumbing solutions, from minor repairs and maintenance to full-scale installations.
+              {t('about.p1')}
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Our approach to customer service is simple: be reliable, communicate clearly, and perform the job to the highest standard.
+              {t('about.p2')}
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              We understand that plumbing issues can be stressful. That's why we emphasize prompt response times and direct communication so you always know what to expect. Quality workmanship is the cornerstone of our business, ensuring that every faucet we install and every pipe we repair stands the test of time.
+              {t('about.p3')}
             </p>
           </div>
 
@@ -51,9 +53,9 @@ const About = () => {
               <div className="w-16 h-16 mx-auto bg-brand-navy rounded-full flex items-center justify-center text-white shadow-md">
                 <Target className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">What We Do</h3>
+              <h3 className="text-xl font-bold text-gray-900">{t('about.whatWeDo')}</h3>
               <p className="text-gray-600">
-                We handle a variety of plumbing needs including leaks, installations, sanitary fittings, and general maintenance for homes.
+                {t('about.whatWeDoDesc')}
               </p>
             </div>
 
@@ -61,9 +63,9 @@ const About = () => {
               <div className="w-16 h-16 mx-auto bg-brand-navy rounded-full flex items-center justify-center text-white shadow-md">
                 <Shield className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">Quality Workmanship</h3>
+              <h3 className="text-xl font-bold text-gray-900">{t('about.quality')}</h3>
               <p className="text-gray-600">
-                We take pride in our work. Doing the job right the first time is our priority, giving you peace of mind and long-lasting solutions.
+                {t('about.qualityDesc')}
               </p>
             </div>
 
@@ -71,9 +73,9 @@ const About = () => {
               <div className="w-16 h-16 mx-auto bg-brand-navy rounded-full flex items-center justify-center text-white shadow-md">
                 <Users className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">Clear Communication</h3>
+              <h3 className="text-xl font-bold text-gray-900">{t('about.communication')}</h3>
               <p className="text-gray-600">
-                No jargon, no runarounds. We explain the problem clearly and discuss the solution with you before any work begins.
+                {t('about.communicationDesc')}
               </p>
             </div>
 

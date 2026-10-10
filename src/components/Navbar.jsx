@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { BUSINESS } from '../data/business';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +20,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Contact', path: '/contact' }
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.services'), path: '/services' },
+    { name: t('nav.portfolio'), path: '/portfolio' },
+    { name: t('nav.contact'), path: '/contact' }
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -79,6 +82,7 @@ const Navbar = () => {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-3 shrink-0">
+              <LanguageSwitcher />
               <a 
                 href={whatsappUrl}
                 target="_blank" 
@@ -93,7 +97,7 @@ const Navbar = () => {
                 className="group flex items-center gap-2 bg-brand-navy text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-900 shadow-md transition-all duration-300"
               >
                 <Phone size={16} className="group-hover:animate-pulse" />
-                <span>Call Us</span>
+                <span>{t('nav.callUs')}</span>
               </a>
             </div>
 
@@ -132,6 +136,9 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="col-span-2 flex justify-center mb-2">
+                <LanguageSwitcher />
+              </div>
               <a 
                 href={whatsappUrl}
                 target="_blank" 
@@ -140,7 +147,7 @@ const Navbar = () => {
                 className="flex items-center justify-center gap-2 bg-green-50 text-brand-green px-4 py-3.5 rounded-xl font-bold active:scale-95 transition-transform"
               >
                 <MessageCircle size={18} />
-                <span>Chat</span>
+                <span>{t('nav.chat')}</span>
               </a>
               <a 
                 href={`tel:${BUSINESS.phone}`}
@@ -148,7 +155,7 @@ const Navbar = () => {
                 className="flex items-center justify-center gap-2 bg-brand-navy text-white px-4 py-3.5 rounded-xl font-bold active:scale-95 transition-transform shadow-md"
               >
                 <Phone size={18} />
-                <span>Call</span>
+                <span>{t('nav.call')}</span>
               </a>
             </div>
           </div>
