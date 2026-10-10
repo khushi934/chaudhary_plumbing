@@ -4,7 +4,7 @@ export const BUSINESS = {
   whatsapp: "+917752914486",
   address: "Rajeev Enclave ,Block 3, House No. 02, 3rd Floor,Near Mokadam Chowk, UIT Sector 3, Bhiwadi, Rajasthan - 301019",
   // email: "contact@chaudharyplumbing.com",
-  businessHours: "Mon - Sat: 8:00 AM - 8:00 PM"
+  businessHours: "Sun-Mon: 8:00 AM - 8:00 PM, Tue: 8:00 AM - 4:00 PM, Wed-Sat: 8:00 AM - 8:00 PM"
 };
 
 export const getWhatsappUrl = (serviceName = null) => {
