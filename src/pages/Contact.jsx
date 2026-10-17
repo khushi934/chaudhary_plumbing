@@ -5,10 +5,30 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
   const { t } = useLanguage();
-  useEffect(() => {
-    document.title = `Contact Us | ${BUSINESS.name}`;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', `Get in touch with ${BUSINESS.name} for all your plumbing needs. Call or WhatsApp us today.`);
-  }, []);
+  // useEffect(() => {
+  //   document.title = `Contact Us | ${BUSINESS.name}`;
+  //   document.querySelector('meta[name="description"]')?.setAttribute('content', `Get in touch with ${BUSINESS.name} for all your plumbing needs. Call or WhatsApp us today.`);
+  // }, []);
+
+useEffect(() => {
+  document.title =
+    `Contact a Plumber in Bhiwadi | ${BUSINESS.name}`;
+
+  let description = document.querySelector(
+    'meta[name="description"]'
+  );
+
+  if (!description) {
+    description = document.createElement('meta');
+    description.setAttribute('name', 'description');
+    document.head.appendChild(description);
+  }
+
+  description.setAttribute(
+    'content',
+    `Contact ${BUSINESS.name} for plumbing enquiries in Bhiwadi, Rajasthan. Call or message us to discuss your plumbing requirements.`
+  );
+}, []);
 
   const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent("Hello, I need a plumber.")}`;
   const mapSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS.address)}`;

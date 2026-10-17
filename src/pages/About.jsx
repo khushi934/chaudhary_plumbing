@@ -5,10 +5,31 @@ import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
   const { t } = useLanguage();
-  useEffect(() => {
-    document.title = `About Us | ${BUSINESS.name}`;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', `Learn more about ${BUSINESS.name} and our commitment to quality plumbing services.`);
-  }, []);
+  // useEffect(() => {
+  //   document.title = `About Us | ${BUSINESS.name}`;
+  //   document.querySelector('meta[name="description"]')?.setAttribute('content', `Learn more about ${BUSINESS.name} and our commitment to quality plumbing services.`);
+  // }, []);
+
+
+useEffect(() => {
+  document.title =
+    `About ${BUSINESS.name} | Bhiwadi, Rajasthan`;
+
+  let description = document.querySelector(
+    'meta[name="description"]'
+  );
+
+  if (!description) {
+    description = document.createElement('meta');
+    description.setAttribute('name', 'description');
+    document.head.appendChild(description);
+  }
+
+  description.setAttribute(
+    'content',
+    `Learn about ${BUSINESS.name}, a plumbing business serving customers in Bhiwadi, Rajasthan. Explore our approach to plumbing services and customer support.`
+  );
+}, []);
 
   return (
     <div className="bg-white min-h-screen">

@@ -6,10 +6,31 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Portfolio = () => {
   const { t } = useLanguage();
-  useEffect(() => {
-    document.title = `Our Work Portfolio | ${BUSINESS.name}`;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', `Explore our gallery of completed plumbing projects by ${BUSINESS.name}.`);
-  }, []);
+  // useEffect(() => {
+  //   document.title = `Our Work Portfolio | ${BUSINESS.name}`;
+  //   document.querySelector('meta[name="description"]')?.setAttribute('content', `Explore our gallery of completed plumbing projects by ${BUSINESS.name}.`);
+  // }, []);
+  
+useEffect(() => {
+  document.title =
+    `Plumbing Work Portfolio | ${BUSINESS.name}`;
+
+  let description = document.querySelector(
+    'meta[name="description"]'
+  );
+
+  if (!description) {
+    description = document.createElement('meta');
+    description.setAttribute('name', 'description');
+    document.head.appendChild(description);
+  }
+
+  description.setAttribute(
+    'content',
+    `Explore plumbing work and project photos featured by ${BUSINESS.name} in Bhiwadi, Rajasthan. View our portfolio and contact us about your plumbing requirements.`
+  );
+}, []);
+
 
   const categories = [
     {
