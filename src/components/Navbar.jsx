@@ -4,6 +4,7 @@ import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { BUSINESS } from '../data/business';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import logo from '../assets/logo.jpg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,20 +47,14 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             
-            {/* Elegant Logomark */}
+            {/* Logo */}
             <div className="flex items-center shrink-0">
-              <Link to="/" className="flex items-center gap-3 group" onClick={closeMenu}>
-                <div className="bg-gradient-to-tr from-brand-navy to-blue-800 text-white p-2 rounded-lg shadow-inner group-hover:scale-105 transition-transform duration-300">
-                  <span className="font-serif font-bold text-xl leading-none">C</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-extrabold text-lg md:text-xl text-gray-900 tracking-tight leading-tight group-hover:text-brand-navy transition-colors">
-                    Chaudhary
-                  </span>
-                  <span className="text-[10px] sm:text-xs font-semibold text-brand-green tracking-widest uppercase leading-none">
-                    Plumbing Works
-                  </span>
-                </div>
+              <Link to="/" onClick={closeMenu}>
+                <img
+                  src={logo}
+                  alt="Chaudhary Plumbing Works"
+                  className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                />
               </Link>
             </div>
             

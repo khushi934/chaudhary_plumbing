@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Mail, Droplet } from 'lucide-react';
+import { Phone, MapPin, Mail } from 'lucide-react';
 import { BUSINESS } from '../data/business';
 import { useLanguage } from '../context/LanguageContext';
+import logo from '../assets/logo.jpg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,9 +15,14 @@ const Footer = () => {
           
           {/* Brand Col */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <Droplet className="h-7 w-7 text-white" strokeWidth={2.5} />
-              <span className="font-bold text-xl tracking-wide">{BUSINESS.name}</span>
+            <Link to="/" className="inline-block">
+              <div className="bg-white rounded-xl p-2 inline-block">
+                <img
+                  src={logo}
+                  alt="Chaudhary Plumbing Works"
+                  className="h-14 w-auto object-contain"
+                />
+              </div>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed max-w-sm mt-4">
               {t('footer.description')}
