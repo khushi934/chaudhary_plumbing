@@ -1,4 +1,4 @@
-
+import { updateSEO } from '../utils/seo';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MessageCircle } from 'lucide-react';
@@ -6,6 +6,12 @@ import { BUSINESS } from '../data/business';
 
 export default function PipeLeakageRepair() {
   useEffect(() => {
+    updateSEO(
+    `Pipe Leakage Repair in Bhiwadi | ${BUSINESS.name}`,
+    `Contact ${BUSINESS.name} for pipe leakage repair services in Bhiwadi, Rajasthan.`,
+    '/pipe-leakage-repair-bhiwadi'
+  );
+
     document.title =
       `Pipe Leakage Repair in Bhiwadi | ${BUSINESS.name}`;
 
