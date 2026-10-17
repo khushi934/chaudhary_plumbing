@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { MessageCircle, Wrench, Droplets, ShowerHead, Bath, Container, Activity, Settings } from 'lucide-react';
 import { BUSINESS } from '../data/business';
 import { SERVICES } from '../data/services';
@@ -70,9 +71,23 @@ useEffect(() => {
                     {getIcon(service.icon)}
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">{t(`servicesData.${service.id}.title`) || service.title}</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed">
+                  {/* <p className="text-gray-600 text-lg leading-relaxed">
                     {t(`servicesData.${service.id}.description`) || service.description}
-                  </p>
+                  </p> */}
+                  
+<p className="text-gray-600 text-lg leading-relaxed">
+  {t(`servicesData.${service.id}.description`) || service.description}
+</p>
+
+{service.id === 'pipe-leakage' && (
+  <Link
+    to="/pipe-leakage-repair-bhiwadi"
+    className="inline-block mt-4 font-semibold text-brand-navy underline"
+  >
+    Learn more about pipe leakage repair
+  </Link>
+)}
+
                 </div>
                 <div className="px-8 pb-8 mt-auto pt-4 border-t border-gray-50">
                   <a 

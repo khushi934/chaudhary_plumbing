@@ -7,7 +7,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Portfolio from './pages/Portfolio';
-
+import PipeLeakageRepair from './pages/PipeLeakageRepair';
 function App() {
   return (
     <Router>
@@ -20,6 +20,10 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route
+  path="/pipe-leakage-repair-bhiwadi"
+  element={<PipeLeakageRepair />}
+/>
           </Routes>
         </main>
         <Footer />
