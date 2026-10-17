@@ -14,17 +14,33 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           
           {/* Brand Col */}
-          <div className="space-y-4">
-            <Link to="/" className="inline-block">
-              <div className="bg-white rounded-xl p-2 inline-block">
-                <img
-                  src={logo}
-                  alt="Chaudhary Plumbing Works"
-                  className="h-14 w-auto object-contain"
-                />
+          <div className="space-y-5">
+            <Link to="/" className="flex items-center gap-3 group w-fit">
+              {/* Circular logo with golden gradient ring */}
+              <div className="relative">
+                <div className="w-14 h-14 rounded-full p-[2.5px] bg-gradient-to-tr from-yellow-400 via-amber-500 to-orange-400 shadow-lg group-hover:shadow-amber-400/40 group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                  <div className="w-full h-full rounded-full overflow-hidden border-2 border-white/10">
+                    <img
+                      src={logo}
+                      alt="Chaudhary Plumbing Works"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                {/* Glow */}
+                <div className="absolute inset-0 rounded-full bg-amber-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              </div>
+              {/* Business name */}
+              <div className="flex flex-col leading-tight">
+                <span className="font-extrabold text-lg text-white tracking-tight">
+                  Chaudhary
+                </span>
+                <span className="text-[10px] font-bold text-teal-400 tracking-[0.15em] uppercase">
+                  Plumbing Works
+                </span>
               </div>
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed max-w-sm mt-4">
+            <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
               {t('footer.description')}
             </p>
           </div>

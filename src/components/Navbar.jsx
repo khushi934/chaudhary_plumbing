@@ -49,12 +49,30 @@ const Navbar = () => {
             
             {/* Logo */}
             <div className="flex items-center shrink-0">
-              <Link to="/" onClick={closeMenu}>
-                <img
-                  src={logo}
-                  alt="Chaudhary Plumbing Works"
-                  className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 hover:scale-105"
-                />
+              <Link to="/" onClick={closeMenu} className="flex items-center gap-3 group">
+                {/* Circular logo with gradient ring */}
+                <div className="relative">
+                  <div className="w-11 h-11 md:w-13 md:h-13 rounded-full p-[2.5px] bg-gradient-to-tr from-brand-navy via-blue-500 to-teal-400 shadow-lg group-hover:shadow-blue-300/50 group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <div className="w-full h-full rounded-full overflow-hidden border-2 border-white">
+                      <img
+                        src={logo}
+                        alt="Chaudhary Plumbing Works"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  {/* Glow ring on hover */}
+                  <div className="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                </div>
+                {/* Business name */}
+                <div className="flex flex-col leading-tight">
+                  <span className="font-extrabold text-base md:text-lg text-gray-900 tracking-tight group-hover:text-brand-navy transition-colors duration-200">
+                    Chaudhary
+                  </span>
+                  <span className="text-[10px] font-bold text-teal-600 tracking-[0.15em] uppercase">
+                    Plumbing Works
+                  </span>
+                </div>
               </Link>
             </div>
             
