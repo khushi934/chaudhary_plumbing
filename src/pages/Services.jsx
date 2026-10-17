@@ -6,10 +6,29 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Services = () => {
   const { t } = useLanguage();
-  useEffect(() => {
-    document.title = `Our Services | ${BUSINESS.name}`;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', 'Professional and reliable plumbing solutions tailored for your home. View our full list of services.');
-  }, []);
+  // useEffect(() => {
+  //   document.title = `Our Services | ${BUSINESS.name}`;
+  //   document.querySelector('meta[name="description"]')?.setAttribute('content', 'Professional and reliable plumbing solutions tailored for your home. View our full list of services.');
+  // }, []);
+
+useEffect(() => {
+  document.title = `Plumbing Services in Bhiwadi, Rajasthan | ${BUSINESS.name}`;
+
+  const description =
+    `Explore plumbing services in Bhiwadi, Rajasthan from ${BUSINESS.name}. Contact us about the plumbing services we offer and request an enquiry via WhatsApp.`;
+
+  let metaDescription = document.querySelector(
+    'meta[name="description"]'
+  );
+
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    document.head.appendChild(metaDescription);
+  }
+
+  metaDescription.setAttribute('content', description);
+}, []);
 
   const getIcon = (iconName) => {
     const defaultClasses = "w-10 h-10 text-brand-navy";
@@ -28,7 +47,10 @@ const Services = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <div className="bg-brand-navy pt-20 pb-16 text-center text-white">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('services.title')}</h1>
+        {/* <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('services.title')}</h1> */}
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+  Plumbing Services in Bhiwadi, Rajasthan
+</h1>
         <p className="text-lg text-gray-300 max-w-2xl mx-auto px-4">
           {t('services.subtitle')}
         </p>

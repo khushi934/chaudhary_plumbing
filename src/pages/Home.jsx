@@ -7,10 +7,30 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Home = () => {
   const { t } = useLanguage();
-  useEffect(() => {
-    document.title = `Plumbing Services in Bhiwadi | ${BUSINESS.name}`;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', 'Reliable plumbing solutions for your home. Leak repair, bathroom fittings, and maintenance.');
-  }, []);
+  // useEffect(() => {
+  //   document.title = `Plumbing Services in Bhiwadi | ${BUSINESS.name}`;
+  //   document.querySelector('meta[name="description"]')?.setAttribute('content', 'Reliable plumbing solutions for your home. Leak repair, bathroom fittings, and maintenance.');
+  // }, []);
+  
+useEffect(() => {
+  document.title = `Plumber in Bhiwadi, Rajasthan | ${BUSINESS.name}`;
+
+  const description =
+    `Looking for a plumber in Bhiwadi, Rajasthan? Contact ${BUSINESS.name} for plumbing services, pipe leakage repairs, tap repairs and bathroom fittings.`;
+
+  let metaDescription = document.querySelector(
+    'meta[name="description"]'
+  );
+
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    document.head.appendChild(metaDescription);
+  }
+
+  metaDescription.setAttribute('content', description);
+}, []);
+
 
   const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent("Hello, I need a plumber.")}`;
   const highlightedServices = SERVICES.slice(0, 4); 
@@ -107,7 +127,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {highlightedServices.map((service) => (
-              <div 
+              <Link
                 key={service.id} 
                 className="bg-gray-50 rounded-xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 group"
               >
@@ -118,7 +138,7 @@ const Home = () => {
                 <p className="text-gray-600 mb-6 line-clamp-3">
                   {t(`servicesData.${service.id}.description`) || service.description}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
 
