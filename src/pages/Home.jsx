@@ -7,35 +7,30 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Home = () => {
   const { t } = useLanguage();
-  // useEffect(() => {
-  //   document.title = `Plumbing Services in Bhiwadi | ${BUSINESS.name}`;
-  //   document.querySelector('meta[name="description"]')?.setAttribute('content', 'Reliable plumbing solutions for your home. Leak repair, bathroom fittings, and maintenance.');
-  // }, []);
-  
-useEffect(() => {
-  document.title = `Plumber in Bhiwadi, Rajasthan | ${BUSINESS.name}`;
 
-  const description =
-    `Looking for a plumber in Bhiwadi, Rajasthan? Contact ${BUSINESS.name} for plumbing services, pipe leakage repairs, tap repairs and bathroom fittings.`;
+  useEffect(() => {
+    document.title = `Plumber in Bhiwadi, Rajasthan | ${BUSINESS.name}`;
 
-  let metaDescription = document.querySelector(
-    'meta[name="description"]'
-  );
+    // Meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', `Looking for a plumber in Bhiwadi, Rajasthan? ${BUSINESS.name} offers pipe leakage repair, bathroom fitting, tap repair & all plumbing services. Call now!`);
 
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta');
-    metaDescription.setAttribute('name', 'description');
-    document.head.appendChild(metaDescription);
-  }
+    // Canonical
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', 'https://www.chaudharyplumbingworks.tech/');
 
-  metaDescription.setAttribute('content', description);
-}, []);
-
+    // OG tags
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', `Plumber in Bhiwadi, Rajasthan | ${BUSINESS.name}`);
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', `Need a plumber in Bhiwadi? ${BUSINESS.name} offers reliable pipe repair, bathroom fitting & all plumbing services. Call or WhatsApp us today!`);
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', 'https://www.chaudharyplumbingworks.tech/');
+  }, []);
 
   const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent("Hello, I need a plumber.")}`;
   const highlightedServices = SERVICES.slice(0, 4); 
 
-  // Mapping string icons to Lucide components for the preview
   const getIcon = (iconName) => {
     switch(iconName) {
       case 'Wrench': return <Wrench className="w-8 h-8 text-brand-navy" />;
@@ -57,6 +52,14 @@ useEffect(() => {
               </h1>
               <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto md:mx-0 leading-relaxed">
                 {t('home.subtitle')}
+              </p>
+
+              {/* Local SEO text for Google crawlers */}
+              <p className="sr-only">
+                Chaudhary Plumbing Works is a professional plumber in Bhiwadi, Rajasthan serving UIT Sector 3, 
+                Chopanki, Tapukara, Khushkhera and surrounding areas. We specialize in pipe leakage repair, 
+                bathroom fitting, tap repair, geyser installation, and water tank services. 
+                Call us on {BUSINESS.phone} for fast, reliable plumbing services.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-4">
@@ -89,7 +92,7 @@ useEffect(() => {
 
             <div className="flex-1 w-full max-w-lg mx-auto md:max-w-none">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group border-4 border-white bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=100" alt="Professional Plumbing Services" className="w-full h-full object-cover aspect-[4/3] transform transition-transform duration-700 group-hover:scale-105" />
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=100" alt="Professional Plumbing Services in Bhiwadi Rajasthan" className="w-full h-full object-cover aspect-[4/3] transform transition-transform duration-700 group-hover:scale-105" />
                 
                 {/* Floating Trust Badge 1 */}
                 <div className="absolute bottom-6 left-4 md:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-gray-100 flex items-center gap-4 transition-transform hover:-translate-y-1">
@@ -129,6 +132,7 @@ useEffect(() => {
             {highlightedServices.map((service) => (
               <Link
                 key={service.id} 
+                to="/services"
                 className="bg-gray-50 rounded-xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 group"
               >
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform">
@@ -207,6 +211,26 @@ useEffect(() => {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Areas Served — important for local SEO */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">
+            Plumbing Services Near You in Bhiwadi
+          </h2>
+          <p className="text-gray-600 text-lg mb-6 max-w-3xl mx-auto">
+            We serve customers across Bhiwadi and surrounding areas including UIT Sector 3, 
+            Chopanki, Tapukara, Khushkhera, Neemrana, and Alwar. Fast response, honest pricing.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 text-sm">
+            {['UIT Sector 3', 'Chopanki', 'Tapukara', 'Khushkhera', 'Neemrana', 'Bhiwadi Industrial Area', 'Alwar Road', 'Dharuhera'].map(area => (
+              <span key={area} className="bg-gray-100 text-brand-navy px-4 py-2 rounded-full font-medium border border-gray-200">
+                📍 {area}
+              </span>
+            ))}
           </div>
         </div>
       </section>
