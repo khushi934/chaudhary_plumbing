@@ -13,7 +13,6 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('appLanguage', language);
     document.documentElement.lang = language;
-    document.title = language === 'hi' ? 'चौधरी प्लंबिंग वर्क्स' : 'Chaudhary Plumbing Works';
   }, [language]);
 
   const toggleLanguage = () => {

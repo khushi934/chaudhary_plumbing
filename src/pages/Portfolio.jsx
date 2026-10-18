@@ -105,8 +105,10 @@ useEffect(() => {
                     {img ? (
                       <img 
                         src={img} 
-                        alt={`Project showcasing ${catTitle}`}
+                        alt={`${catTitle} work by plumber in Bhiwadi Rajasthan — Chaudhary Plumbing Works`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
                       />
                     ) : (
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 p-6 text-center bg-gray-100 group-hover:bg-gray-200 transition-colors">

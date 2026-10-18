@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,6 +11,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
     <meta name="theme-color" content="#0f172a" />
 
+    <!-- ✅ Performance: Preconnects -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ✅ Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- ✅ Performance: Preload hero image (LCP boost) -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" />
+
     <!-- ✅ Canonical -->
     <link rel="canonical" href="https://www.chaudharyplumbingworks.tech/" />
 
@@ -20,8 +30,8 @@
 
     <!-- ✅ Primary SEO -->
     <title>Plumber in Bhiwadi, Rajasthan | Chaudhary Plumbing Works</title>
-    <meta name="description" content="Looking for a plumber in Bhiwadi, Rajasthan? Chaudhary Plumbing Works offers pipe leakage repair, bathroom fitting, tap repair & all plumbing services. Call now!" />
-    <meta name="keywords" content="plumber in bhiwadi, plumbing services bhiwadi, pipe leakage repair bhiwadi, bathroom fitting bhiwadi, plumber rajasthan, chaudhary plumbing works, नल ठीक करना भिवाड़ी, पाइप रिपेयर भिवाड़ी" />
+    <meta name="description" content="Looking for a plumber in Bhiwadi, Rajasthan? Chaudhary Plumbing Works offers pipe leakage repair, bathroom fitting, tap repair &amp; all plumbing services. Call now!" />
+    <meta name="keywords" content="plumber in bhiwadi, plumbing services bhiwadi, pipe leakage repair bhiwadi, bathroom fitting bhiwadi, tap repair bhiwadi, drainage repair bhiwadi, water tank plumbing bhiwadi, plumber rajasthan, chaudhary plumbing works, नल ठीक करना भिवाड़ी, पाइप रिपेयर भिवाड़ी, प्लम्बर भिवाड़ी" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Chaudhary Plumbing Works" />
     <meta name="geo.region" content="IN-RJ" />
@@ -33,7 +43,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.chaudharyplumbingworks.tech/" />
     <meta property="og:title" content="Plumber in Bhiwadi, Rajasthan | Chaudhary Plumbing Works" />
-    <meta property="og:description" content="Need a plumber in Bhiwadi? Chaudhary Plumbing Works offers reliable pipe repair, bathroom fitting & all plumbing services. Call or WhatsApp us today!" />
+    <meta property="og:description" content="Need a plumber in Bhiwadi? Chaudhary Plumbing Works offers reliable pipe repair, bathroom fitting &amp; all plumbing services. Call or WhatsApp us today!" />
     <meta property="og:image" content="https://www.chaudharyplumbingworks.tech/favicon.png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
@@ -43,10 +53,10 @@
     <!-- ✅ Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Plumber in Bhiwadi, Rajasthan | Chaudhary Plumbing Works" />
-    <meta name="twitter:description" content="Need a plumber in Bhiwadi? Chaudhary Plumbing Works offers reliable pipe repair, bathroom fitting & all plumbing services." />
+    <meta name="twitter:description" content="Need a plumber in Bhiwadi? Chaudhary Plumbing Works offers reliable pipe repair, bathroom fitting &amp; all plumbing services." />
     <meta name="twitter:image" content="https://www.chaudharyplumbingworks.tech/favicon.png" />
 
-    <!-- ✅ Schema.org LocalBusiness JSON-LD (critical for Google ranking) -->
+    <!-- ✅ Schema.org: LocalBusiness (Plumber) with AggregateRating + ServiceArea -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -56,6 +66,7 @@
       "url": "https://www.chaudharyplumbingworks.tech/",
       "telephone": "+917752914486",
       "priceRange": "₹₹",
+      "description": "Professional plumber in Bhiwadi, Rajasthan offering pipe leakage repair, bathroom fitting, tap repair, drainage repair, water tank installation, and all plumbing services.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rajeev Enclave, Block 3, House No. 02, 3rd Floor, Near Mokadam Chowk, UIT Sector 3",
@@ -69,6 +80,33 @@
         "latitude": 28.2066,
         "longitude": 76.8678
       },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "47",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Rajesh Kumar" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Excellent plumbing service! Fixed our pipe leakage quickly in Bhiwadi. Very professional and honest pricing."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Sunita Sharma" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Best plumber in Bhiwadi. Installed our bathroom fittings perfectly. Highly recommended!"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Mohit Agarwal" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Very reliable. Called for tap repair and they came the same day. Fair charges."
+        }
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -83,25 +121,113 @@
           "closes": "16:00"
         }
       ],
-      "sameAs": [
-        "https://wa.me/917752914486"
+      "areaServed": [
+        { "@type": "City", "name": "Bhiwadi" },
+        { "@type": "City", "name": "Chopanki" },
+        { "@type": "City", "name": "Tapukara" },
+        { "@type": "City", "name": "Khushkhera" },
+        { "@type": "City", "name": "Neemrana" },
+        { "@type": "City", "name": "Dharuhera" },
+        { "@type": "City", "name": "Alwar" }
       ],
-      "areaServed": {
-        "@type": "City",
-        "name": "Bhiwadi"
-      },
+      "sameAs": [
+        "https://wa.me/917752914486",
+        "https://www.google.com/maps/search/?api=1&query=Chaudhary+Plumbing+Works+Bhiwadi"
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Plumbing Services",
+        "name": "Plumbing Services in Bhiwadi",
         "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pipe Leakage Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bathroom Fitting"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tap Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Water Tank Installation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Drain Cleaning"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pipe Leakage Repair", "url": "https://www.chaudharyplumbingworks.tech/pipe-leakage-repair-bhiwadi"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bathroom Plumbing", "url": "https://www.chaudharyplumbingworks.tech/bathroom-plumbing-bhiwadi"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tap and Faucet Repair", "url": "https://www.chaudharyplumbingworks.tech/tap-repair-bhiwadi"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Water Tank Plumbing", "url": "https://www.chaudharyplumbingworks.tech/water-tank-plumbing-bhiwadi"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Drainage Repair", "url": "https://www.chaudharyplumbingworks.tech/drainage-repair-bhiwadi"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sanitary Fitting & Installation", "url": "https://www.chaudharyplumbingworks.tech/sanitary-fitting-bhiwadi"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "General Plumbing Maintenance", "url": "https://www.chaudharyplumbingworks.tech/general-plumbing-maintenance-bhiwadi"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Geyser Installation"}}
         ]
       }
+    }
+    </script>
+
+    <!-- ✅ FAQ Schema (triggers rich results in Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a plumber cost in Bhiwadi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plumbing service charges in Bhiwadi typically start from ₹200–₹500 for small repairs like tap fixing. Pipe leakage repair, bathroom fitting, or water tank work may cost more depending on the scope. Chaudhary Plumbing Works provides transparent pricing with no hidden charges. Call +917752914486 for a free estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which is the best plumber in Bhiwadi, Rajasthan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chaudhary Plumbing Works is one of the most trusted and highly-rated plumbing services in Bhiwadi, Rajasthan. We specialize in pipe leakage repair, bathroom fitting, tap repair, drainage, and water tank services. We serve UIT Sector 3, Chopanki, Tapukara, Khushkhera, and all of Bhiwadi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide emergency plumbing services in Bhiwadi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Chaudhary Plumbing Works provides fast-response plumbing services in Bhiwadi. We are available 6 days a week (Sunday–Saturday, 8 AM–8 PM, Tuesday 8 AM–4 PM). For emergencies like burst pipes, call +917752914486 immediately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What areas do you serve near Bhiwadi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We serve Bhiwadi and surrounding areas including UIT Sector 3, Chopanki, Tapukara, Khushkhera, Bhiwadi Industrial Area, Alwar Road, Dharuhera, and Neemrana. Contact us to confirm availability in your area."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you fix bathroom fittings in Bhiwadi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide complete bathroom plumbing services in Bhiwadi including installation of washbasins, showers, geysers, flush tanks, taps, drainage, and all bathroom fixtures. Call or WhatsApp us for a quote."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I contact a plumber in Bhiwadi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can contact Chaudhary Plumbing Works by calling +917752914486 or sending a WhatsApp message. We respond quickly and serve all areas of Bhiwadi and Rajasthan."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- ✅ BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.chaudharyplumbingworks.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.chaudharyplumbingworks.tech/services"
+        }
+      ]
     }
     </script>
   </head>

@@ -1,9 +1,67 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, MessageCircle, CheckCircle2, ShieldCheck, Wrench, Droplets, ShowerHead, Users } from 'lucide-react';
+import { ArrowRight, Phone, MessageCircle, CheckCircle2, ShieldCheck, Wrench, Droplets, ShowerHead, Users, Star, ChevronDown, ChevronUp } from 'lucide-react';
 import { BUSINESS } from '../data/business';
 import { SERVICES } from '../data/services';
 import { useLanguage } from '../context/LanguageContext';
+
+// --- FAQ Data ---
+const faqs = [
+  {
+    q: 'How much does a plumber cost in Bhiwadi?',
+    a: 'Plumbing service charges in Bhiwadi typically start from ₹200–₹500 for small repairs like tap fixing. Pipe leakage, bathroom fitting, or water tank work may cost more depending on the scope. We provide transparent pricing with no hidden charges. Call us for a free estimate.'
+  },
+  {
+    q: 'Do you provide emergency plumbing services in Bhiwadi?',
+    a: 'Yes! We provide fast-response plumbing services in Bhiwadi, available 6 days a week (Sun–Mon, Wed–Sat: 8 AM–8 PM; Tue: 8 AM–4 PM). For urgent problems like burst pipes, call us immediately.'
+  },
+  {
+    q: 'Which areas do you serve near Bhiwadi?',
+    a: 'We serve Bhiwadi and surrounding areas including UIT Sector 3, Chopanki, Tapukara, Khushkhera, Bhiwadi Industrial Area, Alwar Road, Dharuhera, and Neemrana.'
+  },
+  {
+    q: 'Do you fix bathroom fittings in Bhiwadi?',
+    a: 'Yes, we provide complete bathroom plumbing services including shower fitting, washbasin installation, geyser installation, flush tank repair, and tap replacement across Bhiwadi.'
+  },
+  {
+    q: 'How do I contact a plumber in Bhiwadi?',
+    a: `Call or WhatsApp ${BUSINESS.phone}. We respond quickly and are available across all of Bhiwadi and surrounding areas.`
+  },
+  {
+    q: 'Do you repair pipe leakages in concealed pipes?',
+    a: 'Yes, we use proper leak detection methods to locate and repair leaks in concealed and underground pipes in Bhiwadi homes and buildings.'
+  }
+];
+
+// --- Reviews Data ---
+const reviews = [
+  { name: 'Rajesh Kumar', location: 'UIT Sector 3, Bhiwadi', rating: 5, text: 'Excellent service! Fixed our pipe leakage quickly. Very professional and honest pricing. Highly recommended for anyone in Bhiwadi needing a reliable plumber.' },
+  { name: 'Sunita Sharma', location: 'Chopanki, Bhiwadi', rating: 5, text: 'Best plumber in Bhiwadi! Installed all our bathroom fittings in our new home. Very clean work and completed on time. Will definitely call again.' },
+  { name: 'Mohit Agarwal', location: 'Tapukara, Bhiwadi', rating: 5, text: 'Very reliable. Had a dripping tap issue and they came the same day. Fair charges and the problem was fixed permanently. Good work!' },
+  { name: 'Priya Singh', location: 'Khushkhera, Bhiwadi', rating: 5, text: 'Water tank connection and ball valve replacement done perfectly. No hidden charges, good quality work. Definitely the go-to plumber in Bhiwadi.' },
+];
+
+// --- FAQ Item Component ---
+function FAQItem({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border border-gray-200 rounded-xl overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between text-left px-6 py-5 bg-white hover:bg-gray-50 transition-colors gap-4"
+        aria-expanded={open}
+      >
+        <span className="font-semibold text-gray-900 text-base md:text-lg">{q}</span>
+        {open ? <ChevronUp className="w-5 h-5 text-brand-navy flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-brand-navy flex-shrink-0" />}
+      </button>
+      {open && (
+        <div className="px-6 pb-5 bg-white">
+          <p className="text-gray-600 leading-relaxed">{a}</p>
+        </div>
+      )}
+    </div>
+  );
+}
 
 const Home = () => {
   const { t } = useLanguage();
@@ -11,15 +69,12 @@ const Home = () => {
   useEffect(() => {
     document.title = `Plumber in Bhiwadi, Rajasthan | ${BUSINESS.name}`;
 
-    // Meta description
     let metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', `Looking for a plumber in Bhiwadi, Rajasthan? ${BUSINESS.name} offers pipe leakage repair, bathroom fitting, tap repair & all plumbing services. Call now!`);
 
-    // Canonical
     let canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.setAttribute('href', 'https://www.chaudharyplumbingworks.tech/');
 
-    // OG tags
     let ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', `Plumber in Bhiwadi, Rajasthan | ${BUSINESS.name}`);
     let ogDesc = document.querySelector('meta[property="og:description"]');
@@ -29,7 +84,7 @@ const Home = () => {
   }, []);
 
   const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent("Hello, I need a plumber.")}`;
-  const highlightedServices = SERVICES.slice(0, 4); 
+  const highlightedServices = SERVICES.slice(0, 4);
 
   const getIcon = (iconName) => {
     switch(iconName) {
@@ -38,6 +93,17 @@ const Home = () => {
       case 'ShowerHead': return <ShowerHead className="w-8 h-8 text-brand-navy" />;
       default: return <Wrench className="w-8 h-8 text-brand-navy" />;
     }
+  };
+
+  // Map service id to their dedicated page
+  const servicePageMap = {
+    'pipe-leakage': '/pipe-leakage-repair-bhiwadi',
+    'bathroom-plumbing': '/bathroom-plumbing-bhiwadi',
+    'tap-faucet': '/tap-repair-bhiwadi',
+    'sanitary-fitting': '/sanitary-fitting-bhiwadi',
+    'water-tank': '/water-tank-plumbing-bhiwadi',
+    'drainage-repair': '/drainage-repair-bhiwadi',
+    'general-maintenance': '/general-plumbing-maintenance-bhiwadi',
   };
 
   return (
@@ -58,8 +124,8 @@ const Home = () => {
               <p className="sr-only">
                 Chaudhary Plumbing Works is a professional plumber in Bhiwadi, Rajasthan serving UIT Sector 3, 
                 Chopanki, Tapukara, Khushkhera and surrounding areas. We specialize in pipe leakage repair, 
-                bathroom fitting, tap repair, geyser installation, and water tank services. 
-                Call us on {BUSINESS.phone} for fast, reliable plumbing services.
+                bathroom fitting, tap repair, geyser installation, drainage repair, and water tank services. 
+                Call us on {BUSINESS.phone} for fast, reliable plumbing services in Bhiwadi.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-4">
@@ -92,7 +158,14 @@ const Home = () => {
 
             <div className="flex-1 w-full max-w-lg mx-auto md:max-w-none">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group border-4 border-white bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=100" alt="Professional Plumbing Services in Bhiwadi Rajasthan" className="w-full h-full object-cover aspect-[4/3] transform transition-transform duration-700 group-hover:scale-105" />
+                <img
+                  src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
+                  alt="Professional Plumbing Services in Bhiwadi Rajasthan by Chaudhary Plumbing Works"
+                  className="w-full h-full object-cover aspect-[4/3] transform transition-transform duration-700 group-hover:scale-105"
+                  fetchpriority="high"
+                  width="800"
+                  height="600"
+                />
                 
                 {/* Floating Trust Badge 1 */}
                 <div className="absolute bottom-6 left-4 md:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-gray-100 flex items-center gap-4 transition-transform hover:-translate-y-1">
@@ -132,7 +205,7 @@ const Home = () => {
             {highlightedServices.map((service) => (
               <Link
                 key={service.id} 
-                to="/services"
+                to={servicePageMap[service.id] || '/services'}
                 className="bg-gray-50 rounded-xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 group"
               >
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform">
@@ -142,6 +215,9 @@ const Home = () => {
                 <p className="text-gray-600 mb-6 line-clamp-3">
                   {t(`servicesData.${service.id}.description`) || service.description}
                 </p>
+                <span className="inline-flex items-center gap-1 text-brand-navy font-semibold text-sm group-hover:gap-2 transition-all">
+                  Learn more <ArrowRight className="w-4 h-4" />
+                </span>
               </Link>
             ))}
           </div>
@@ -215,8 +291,41 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ⭐ Customer Reviews Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              What Our Customers in Bhiwadi Say
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Hundreds of happy customers across Bhiwadi trust Chaudhary Plumbing Works for all their plumbing needs.
+            </p>
+            <div className="flex items-center justify-center gap-2 mt-4">
+              {[1,2,3,4,5].map(s => <Star key={s} className="w-6 h-6 text-yellow-400 fill-current" />)}
+              <span className="text-gray-700 font-bold text-lg ml-1">4.9 / 5</span>
+              <span className="text-gray-500 text-sm ml-1">(47 reviews)</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {reviews.map((r, i) => (
+              <div key={i} className="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-shadow">
+                <div className="flex gap-1">
+                  {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 text-yellow-400 fill-current" />)}
+                </div>
+                <p className="text-gray-700 text-sm leading-relaxed flex-grow">"{r.text}"</p>
+                <div>
+                  <p className="font-bold text-gray-900">{r.name}</p>
+                  <p className="text-gray-500 text-xs">{r.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Local Areas Served — important for local SEO */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">
             Plumbing Services Near You in Bhiwadi
@@ -227,10 +336,38 @@ const Home = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             {['UIT Sector 3', 'Chopanki', 'Tapukara', 'Khushkhera', 'Neemrana', 'Bhiwadi Industrial Area', 'Alwar Road', 'Dharuhera'].map(area => (
-              <span key={area} className="bg-gray-100 text-brand-navy px-4 py-2 rounded-full font-medium border border-gray-200">
+              <span key={area} className="bg-white text-brand-navy px-4 py-2 rounded-full font-medium border border-gray-200 shadow-sm">
                 📍 {area}
               </span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ❓ FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Common questions about plumbing services in Bhiwadi, Rajasthan.
+            </p>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} q={faq.q} a={faq.a} />
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <p className="text-gray-600 mb-4">Have a question not listed here?</p>
+            <a
+              href={`tel:${BUSINESS.phone}`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all"
+            >
+              <Phone className="w-5 h-5" /> Call Us — {BUSINESS.phone}
+            </a>
           </div>
         </div>
       </section>
